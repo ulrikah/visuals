@@ -1,4 +1,4 @@
-let inc = 0.3; // 'better' result for small values, e.g. ~ 0.02 
+let inc = 0.02; // 'better' result for small values, e.g. ~ 0.02 
 let scl = 10;
 let cols, rows;
 
