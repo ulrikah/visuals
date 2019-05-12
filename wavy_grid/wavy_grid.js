@@ -59,7 +59,7 @@ drawWavyGrid = () => {
   
 	factor > 0
 		? factor = map(thresh - Math.abs(offset), 0, 300, 0.03, 1, true)
-		: factor = map(thresh - Math.abs(offset), 0, 300, -0.03, -1, true)
+		: factor = (-1)*map(thresh - Math.abs(offset), 0, 300, 0.03, 1, true)
 
   
 
