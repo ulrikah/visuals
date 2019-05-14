@@ -6,10 +6,10 @@
 - user can change different parameters and choose if gravitation should be allowed (gforce = true | false)
 */
 
-const n = 50; // number of nodes
-const thr = 60; // threshold
-const speed = 1;
-const d = 20;
+const n = 100; // number of nodes
+const speed = 5;
+const d = 10;
+const thr = 5*d; // threshold
 const jitter = 1;
 let nodes = [];
 let c;
@@ -18,10 +18,10 @@ setup = () => {
     colorMode(HSB, 255);
     c = color(0, 126, 255);
     
-    createCanvas(600, 600);
+    createCanvas(windowWidth, windowHeight);
 
     for (let i = 0; i < n; i++) {
-        node = new Node(parseInt(random(width)),parseInt(random(height)), parseInt(random(3)), parseInt(random(3)));
+        node = new Node(parseInt(random(width)),parseInt(random(height)), parseInt(random(speed)), parseInt(random(speed)));
         nodes.push(node);
   } 
 };
@@ -42,7 +42,7 @@ draw = () => {
 function Node(x, y, xspeed = speed, yspeed = speed) {
     this.x = x;
     this.y = y;
-    this.d = random(d/2, d);
+    this.d = random(d/2, d); // random diameter
     this.jitter = jitter; // too much jitter _may_ cause out of bounds
     this.xspeed = xspeed;
     this.yspeed = yspeed; // make individual for each nodes
@@ -94,9 +94,10 @@ drawEucDistance = (node) => {
         if ( nodes[i] != node ) {
             let dist = calcEucDist(node, nodes[i]);
             if (dist < thr) {
-                let offset = map(dist, 0, thr, 0, 0.7);
+                let offset = map(dist, 0, thr, 0, 200);
                 push();
-                strokeWeight(offset);
+                // strokeWeight(offset);
+                stroke(offset)
                 line(node.x, node.y, nodes[i].x, nodes[i].y);
                 pop();
             }
