@@ -11,7 +11,11 @@ let isPlaying = true;
 
 let c = 0;
 
-const colors = {	pink: "#FF377B", beige: "#FEFEDD", lightgrey: "#F9F6EF"}
+const colors = {	
+	pink: "#FF377B", 
+	beige: "#FEFEDD", 
+	lightgrey: "#F9F6EF"
+}
 
 setup = () => {
 	createCanvas(windowWidth, windowHeight);
@@ -31,7 +35,7 @@ drawWavyGrid = () => {
 	let i; 
 	for (i = 0; i <= cols; i ++){
 		dx = offset * noise(xoff)
-		stroke(0,0,0);
+		stroke(colors.pink);
 		noFill();
 		bezier(i*scl, 0, i*scl + dx, height/4, i*scl - dx, 3*height/4, i*scl, height);
 		
@@ -44,7 +48,7 @@ drawWavyGrid = () => {
 	let j;
 	for (j = 0; j <= rows; j ++){
 		dy = offset * noise(yoff)
-		stroke(0,0,0)
+		stroke(colors.pink)
 		noFill();
 		bezier(0, j*scl, width/4, j*scl + dy, 3*width/4, j*scl - dy, width, j*scl);	
 		
@@ -64,12 +68,12 @@ drawWavyGrid = () => {
   
 
   if (Math.abs(offset) > thresh ) {
-  	console.log("OFF", offset)
-  	console.log("FAC", factor)
+  	// console.log("OFF", offset)
+  	// console.log("FAC", factor)
   	factor *= (-1)
   }
 
-  if (c % 100 === 0) { console.log(factor)}
+  // if (c % 100 === 0) { console.log(factor)}
 
 }
 
